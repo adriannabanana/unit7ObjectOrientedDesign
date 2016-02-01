@@ -8,6 +8,12 @@ public class IDCard extends Card
         idNumber = id;
     }
     
+    public String setText()
+    {
+        String formattedDescription = format();
+        formattedDescription += ("\nID Number: " + idNumber);
+        return formattedDescription;
+    }
 }
 
     

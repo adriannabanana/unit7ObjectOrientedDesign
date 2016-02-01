@@ -6,4 +6,11 @@ public class CallingCard extends Card
         super(number);
         pinNum = pin;
     }
+    
+    public String setText()
+    {
+        String formattedDescription = format();
+        formattedDescription += ("\nPin Number: " + pinNum);
+        return formattedDescription;
+    }
 }
