@@ -13,4 +13,9 @@ public class CallingCard extends Card
         formattedDescription += ("\nPin Number: " + pinNum);
         return formattedDescription;
     }
+    
+    public boolean isExpired()
+    {
+        return false;
+    }
 }

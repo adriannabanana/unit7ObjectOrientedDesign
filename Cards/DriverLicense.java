@@ -1,10 +1,30 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class DriverLicense extends Card
 {
-    private String exYear;
-    public DriverLicense(String expirationYear)
+    
+    private int exYear;
+    public DriverLicense(int expirationYear)
     {
         exYear = expirationYear;
     }
+    
+    public boolean isExpired()
+    {
+        GregorianCalendar calendar = new GregorianCalendar();
+        
+        if (calendar.get(Calendar.YEAR) >= this.exYear)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+   
     
     public String setText()
     {
@@ -12,4 +32,6 @@ public class DriverLicense extends Card
         formattedDescription += ("\nExpiration Year: " + exYear);
         return formattedDescription;
     }
+    
+    
 }

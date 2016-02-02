@@ -14,6 +14,11 @@ public class IDCard extends Card
         formattedDescription += ("\nID Number: " + idNumber);
         return formattedDescription;
     }
+    
+    public boolean isExpired()
+    {
+        return false;
+    }
 }
 
     
