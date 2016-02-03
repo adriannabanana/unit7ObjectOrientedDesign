@@ -29,8 +29,9 @@ public class DriverLicense extends Card
     public String setText()
     {
         String formattedDescription = format();
-        formattedDescription += ("\nExpiration Year: " + exYear);
-        return formattedDescription;
+        //formattedDescription += ("\nExpiration Year: " + exYear);
+        //return formattedDescription;
+        return super.format() + ", Expiration year " + this.exYear;
     }
     
     
