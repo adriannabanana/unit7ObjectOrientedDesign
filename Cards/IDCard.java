@@ -38,5 +38,3 @@ public class IDCard extends Card
         return false;
     }
 }
-
-    
