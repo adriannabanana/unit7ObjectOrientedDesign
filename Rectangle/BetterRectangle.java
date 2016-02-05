@@ -4,6 +4,7 @@ public class BetterRectangle extends Rectangle
 {
     public BetterRectangle(int x, int y, int width, int height)
     {
+        super(x,y,width,height);
         super.setLocation(x,y);
         super.setSize(width,height);
     }
