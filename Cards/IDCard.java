@@ -20,7 +20,7 @@ public class IDCard extends Card
         return false;
     }
     
-    // override the quals method defined in Card as well as Object
+    // override the equals method defined in Card as well as Object
     public boolean equals(Object other)
     {
         // check if this object and the other object are both of the same class
