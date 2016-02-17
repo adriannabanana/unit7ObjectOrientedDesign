@@ -1,6 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.event.MouseAdapter;
+
 import java.awt.event.MouseEvent;
 
 
@@ -27,12 +27,6 @@ public class TriangleViewer  extends JFrame
         this.frame = new JFrame();
         this.panel = new JPanel();
         
-        //MouseListener listener = new MouseListener();
-        //component.addMouseListener(listener);
-        
-        TriangleComponent component = new TriangleComponent();
-        component.addMouseListener(());
-        
         this.frame.add(this.panel);
         this.frame.setSize(FRAME_WIDTH,FRAME_HEIGHT);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,8 +35,5 @@ public class TriangleViewer  extends JFrame
     }
     
     
-    //public void mouseReleased(MouseEvent event) {}  
-    //public void mouseClicked(MouseEvent event) {}
-    //public void mouseEntered(MouseEvent event) {}
-    //public void mouseExited(MouseEvent event) {}
+    
 }
