@@ -1,8 +1,4 @@
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import java.awt.event.MouseEvent;
-
 
 /**
  * A program that allows the user to specify a triangle with three mouse presses.
@@ -11,27 +7,22 @@ import java.awt.event.MouseEvent;
  * After the third mouse press, draw the entire triangle.
  * The fourth mouse press erases the old triangle and starts a new one.
  */
-public class TriangleViewer  extends JFrame
+public class TriangleFrame extends JFrame
 {
     private static final int FRAME_WIDTH = 300;
     private static final int FRAME_HEIGHT = 300;
-    
-    private JFrame frame;
-    private JPanel panel;
-    
-    private TriangleComponent scene;
 
-    
-    public TriangleViewer()
+    private TriangleComponent component;
+
+    public TriangleFrame()
     {
-        this.frame = new JFrame();
-        this.panel = new JPanel();
+        this.component = new TriangleComponent();
+        this.add(component);
         
-        this.frame.add(this.panel);
-        this.frame.setSize(FRAME_WIDTH,FRAME_HEIGHT);
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setVisible(true);
-        
+        this.setSize(FRAME_WIDTH,FRAME_HEIGHT);
+        this.setTitle("Triangle");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
     
     
