@@ -1,40 +1,33 @@
-// buttons at the bottom of the panel
+import javax.swing.JPanel;
+import javax.swing.JButton;
 
 /**
  * Write a description of class ControlPanel here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Adrianna Fu
+ * @2.23.16
  */
-public class ControlPanel
+public class ControlPanel extends JPanel
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
+    /** a button that calls canvas' pickColor method */
+    private JButton pickColor;
+    /** a button that adds a circle to the canvas when pressed */
+    private JButton addCircle;
+    /** a button that adds a square to the canvas when pressed */
+    private JButton addSquare;
     /**
      * Default constructor for objects of class ControlPanel
      */
-    public ControlPanel()
+    public ControlPanel(DrawingPanel canvas)
     {
-        // initialise instance variables
-        x = 0;
+        this.pickColor = new JButton("Pick Color");
+        this.addCircle = new JButton("Add Circle");
+        this.addSquare = new JButton("Add square");
+        
+        this.add(this.pickColor);
+        this.add(this.addCircle);
+        this.add(this.addSquare);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x+y;
-    }
-
+    
 }
