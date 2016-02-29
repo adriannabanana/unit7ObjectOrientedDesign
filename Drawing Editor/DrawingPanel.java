@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JColorChooser;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Write a description of class DrawingPanel here.
@@ -20,8 +22,10 @@ public class DrawingPanel extends JPanel
     private Color currentColor;
     /** indicates whether a shape is currently picked on */
     private boolean picked;
-    /** indicates whether shape is being moved (or stretched?)*/
+    /** indicates whether shape is being moved (or stretched)*/
     private boolean moved;
+    /** background color */
+    private Color backgroundColor;
 
     /**
      * Default constructor for objects of class DrawingPanel
@@ -31,18 +35,14 @@ public class DrawingPanel extends JPanel
         this.shapes = new ArrayList<Shape>();
         this.activeShape = null;
         this.currentColor = Color.CYAN;
+        this.backgroundColor = Color.WHITE;
         
     }
 
     /**
      * Returns the current drawing color
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * 
+     * @return    returns the current drawing color
      */
     public Color getColor()
     {
@@ -53,8 +53,6 @@ public class DrawingPanel extends JPanel
      * Overrides JCompoent’s getPreferredSize method to return a size large enough to 
      * encapsulate a reasonable drawing canvas
      * 
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
      * @post    postconditions for the method
      *            (what the method guarantees upon completion)
      * @param    y    description of parameter y
@@ -78,7 +76,7 @@ public class DrawingPanel extends JPanel
      */
     public void pickColor()
     {
-        
+        JColorChooser.showDialog(null, "Color Chooser", this.currentColor);
     }
 
     /**
@@ -112,4 +110,25 @@ public class DrawingPanel extends JPanel
     {
         
     }
+    
+    public class MouseClickListener implements MouseListener
+    {
+        public void mouseClicked(MouseEvent event)
+        {
+            setPoint(event.getX(),event.getY());
+        }
+        
+        public void mouseReleased(MouseEvent event)
+        {
+        }
+        
+        public void mouseEntered(MouseEvent event) 
+        {
+        }
+        
+        public void mouseExited(MouseEvent event)
+        {
+        }
+    }
 }
+
