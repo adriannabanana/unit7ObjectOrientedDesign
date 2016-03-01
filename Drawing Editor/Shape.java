@@ -3,16 +3,18 @@ import java.awt.geom.Point2D;
 import java.awt.Graphics2D;
 
 /**
- * Write a description of abstract class Shape here.
+ * A shape 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Adrianna Fu
+ * @3/1/16
  */
 public abstract class Shape
 {
-    /** description of instance variable x (add comment for each instance variable) */
+    /** the center coordinates */
     private Point2D.Double center;
+    /** the length of the radius */
     private double radius;
+    /** the color of the shape */
     private Color color;
 
     /**

@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import javax.swing.JColorChooser;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
+import java.awt.Graphics2D;
 
 /**
  * Write a description of class DrawingPanel here.
@@ -92,6 +94,9 @@ public class DrawingPanel extends JPanel
      */
     public void addCircle()
     {
+        Circle circle = new Circle(new Point2D.Double(200,200),(50*Math.random()+1),this.currentColor);
+        circle.draw(g2, this.moved);
+        this.picked = true;
         
     }
     
@@ -111,24 +116,24 @@ public class DrawingPanel extends JPanel
         
     }
     
-    public class MouseClickListener implements MouseListener
-    {
-        public void mouseClicked(MouseEvent event)
-        {
-            setPoint(event.getX(),event.getY());
-        }
-        
-        public void mouseReleased(MouseEvent event)
-        {
-        }
-        
-        public void mouseEntered(MouseEvent event) 
-        {
-        }
-        
-        public void mouseExited(MouseEvent event)
-        {
-        }
-    }
+//     public class MouseClickListener implements MouseListener
+//     {
+//         public void mouseClicked(MouseEvent event)
+//         {
+//             setPoint(event.getX(),event.getY());
+//         }
+//         
+//         public void mouseReleased(MouseEvent event)
+//         {
+//         }
+//         
+//         public void mouseEntered(MouseEvent event) 
+//         {
+//         }
+//         
+//         public void mouseExited(MouseEvent event)
+//         {
+//         }
+//     }
 }
 

@@ -1,40 +1,52 @@
+import java.awt.geom.Point2D;
+import java.awt.Graphics2D;
 
 
 /**
- * Write a description of class Square here.
+ * A square shape
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Adrianna Fu
+ * @3/1/16
  */
-public class Square
+public class Square extends Shape
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
+   
     /**
      * Default constructor for objects of class Square
      */
     public Square()
     {
-        // initialise instance variables
-        x = 0;
+        super();
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
+     * Returns true if the point lies inside this shape, false otherwise
      *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * @param    coordinates of point
+     * @return    true if point in shape, false otherwise
      */
-    public int sampleMethod(int y)
+    public boolean isInside(Point2D.Double point)
     {
-        // put your code here
-        return x+y;
+        double x = point.getX();
+        double y = point.getY();
+    }
+    
+    /**
+     * Draws this shape. Draws a filled shape if filled is true, and a hollow shape otherwise.
+     * 
+     * @post    shape will be drawn 
+     * @param   g2 is the graphics, filled is whether or not the shape will be filled or not
+     */
+    public void draw(Graphics2D g2, boolean filled)
+    {
+        if (filled)
+        {
+            g2.fillRect(30,30,30,30);
+        }
+        else
+        {
+            g2.drawRect(30,30,30,30);
+        }
     }
 
 }

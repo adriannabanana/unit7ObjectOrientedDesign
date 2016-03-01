@@ -34,27 +34,15 @@ public class DrawingEditor extends JFrame
         this.add(this.controls, BorderLayout.SOUTH);
         this.add(this.canvas, BorderLayout.NORTH);
         
-        
         this.setTitle("Drawing Editor");
         this.setSize(FRAME_WIDTH,FRAME_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
-    /**
-     * Creates a new DrawingEditor object which opens a window on the screen.
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public void sampleMethod(int y)
+    public static void main(String args[])
     {
-        // put your code here
-
+        DrawingEditor newWindow = new DrawingEditor();
     }
 
 }
