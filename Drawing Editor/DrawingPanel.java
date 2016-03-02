@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import javax.swing.JColorChooser;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
 import java.awt.Graphics2D;
 
@@ -38,6 +41,9 @@ public class DrawingPanel extends JPanel
         this.activeShape = null;
         this.currentColor = Color.CYAN;
         this.backgroundColor = Color.WHITE;
+        
+
+
         
     }
 
@@ -78,7 +84,7 @@ public class DrawingPanel extends JPanel
      */
     public void pickColor()
     {
-        JColorChooser.showDialog(null, "Color Chooser", this.currentColor);
+        this.currentColor = JColorChooser.showDialog(null, "Color Chooser", this.currentColor);
     }
 
     /**
@@ -94,9 +100,9 @@ public class DrawingPanel extends JPanel
      */
     public void addCircle()
     {
-        Circle circle = new Circle(new Point2D.Double(200,200),(50*Math.random()+1),this.currentColor);
-        circle.draw(g2, this.moved);
-        this.picked = true;
+        //Circle circle = new Circle(new Point2D.Double(200,200),(50*Math.random()+1),this.currentColor);
+        //circle.draw(g2, this.moved);
+        //this.picked = true;
         
     }
     
@@ -116,24 +122,54 @@ public class DrawingPanel extends JPanel
         
     }
     
-//     public class MouseClickListener implements MouseListener
-//     {
-//         public void mouseClicked(MouseEvent event)
-//         {
-//             setPoint(event.getX(),event.getY());
-//         }
-//         
-//         public void mouseReleased(MouseEvent event)
-//         {
-//         }
-//         
-//         public void mouseEntered(MouseEvent event) 
-//         {
-//         }
-//         
-//         public void mouseExited(MouseEvent event)
-//         {
-//         }
-//     }
+    public class MouseClickListener implements MouseListener
+    {
+        public void mouseClicked(MouseEvent event)
+        {
+            //setPoint(event.getX(),event.getY());
+        }
+        
+        public void mouseReleased(MouseEvent event)
+        {
+        }
+        
+        public void mouseEntered(MouseEvent event) 
+        {
+        }
+        
+        public void mouseExited(MouseEvent event)
+        {
+        }
+        
+        public void mousePressed(MouseEvent event)
+        {
+        }
+    }
+    
+    public class MouseMotion implements MouseMotionListener
+    {
+        public void mouseMoved(MouseEvent event)
+        {
+        }
+        
+        public void mouseDragged(MouseEvent event)
+        {
+        }
+    }
+    
+    public class KeyPressListener implements KeyListener
+    {
+        public void keyTyped(KeyEvent event)
+        {
+        }
+        
+        public void keyPressed(KeyEvent event)
+        {
+        }
+        
+        public void keyReleased(KeyEvent event)
+        {
+        }
+    }
 }
 

@@ -1,5 +1,5 @@
 import java.awt.geom.Point2D;
-import java.awt.Graphics2D;
+import java.awt.*;
 
 
 /**
@@ -10,13 +10,12 @@ import java.awt.Graphics2D;
  */
 public class Square extends Shape
 {
-   
     /**
      * Default constructor for objects of class Square
      */
-    public Square()
+    public Square(Point2D.Double p, double r, Color c)
     {
-        super();
+        super(p,r,c);
     }
 
     /**
@@ -29,6 +28,15 @@ public class Square extends Shape
     {
         double x = point.getX();
         double y = point.getY();
+//         if (this.contains(x,y))
+//         {
+//             return true;
+//         }
+//         else
+//         {
+//             return false;
+//         }
+return false;
     }
     
     /**
@@ -39,14 +47,7 @@ public class Square extends Shape
      */
     public void draw(Graphics2D g2, boolean filled)
     {
-        if (filled)
-        {
-            g2.fillRect(30,30,30,30);
-        }
-        else
-        {
-            g2.drawRect(30,30,30,30);
-        }
+        
     }
 
 }

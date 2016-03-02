@@ -19,17 +19,23 @@ public class ControlPanel extends JPanel
     private JButton addSquare;
     /** the control panel */
     private DrawingPanel control;
+    
+    private JPanel currentColor;
+    
     /**
      * Default constructor for objects of class ControlPanel
      */
     public ControlPanel(DrawingPanel canvas)
     {
         this.control = canvas;
+        this.currentColor = new JPanel();
+        this.currentColor.setBackground(control.getColor());
         this.pickColor = new JButton("Pick Color");
         this.addCircle = new JButton("Add Circle");
-        this.addSquare = new JButton("Add square");
+        this.addSquare = new JButton("Add Square");
         
         this.add(this.pickColor);
+        this.add(this.currentColor);
         this.add(this.addCircle);
         this.add(this.addSquare);
         
@@ -37,21 +43,23 @@ public class ControlPanel extends JPanel
         this.pickColor.addActionListener(listener);
         this.addCircle.addActionListener(listener);
         this.addSquare.addActionListener(listener);
+        
     }
 
     public class ClickListener implements ActionListener
     {
         public void actionPerformed(ActionEvent event)
         {
-            if (event.getActionCommand()=="pickColor") 
+            if (event.getActionCommand()=="Pick Color") 
             {
                 control.pickColor();
+                currentColor.setBackground(control.getColor());
             }
-            if (event.getActionCommand()=="addCircle")
+            else if (event.getActionCommand()=="Add Circle")
             {
                 control.addCircle();
             }
-            if (event.getActionCommand()=="addSquare")
+            else if (event.getActionCommand()=="Add Square")
             {
                 control.addSquare();
             }
