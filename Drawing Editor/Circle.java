@@ -1,6 +1,7 @@
 import java.awt.geom.Point2D;
-import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
 
 /**
@@ -12,11 +13,11 @@ import java.awt.geom.Ellipse2D;
 public class Circle extends Shape
 {
     /**
-     * Default constructor for objects of class Square
+     * Default constructor for objects of class Circle
      */
-    public Circle(Point2D.Double center, double r, Color c)
+    public Circle(Point2D.Double center, double radius, Color color)
     {
-        super(center,r,c);
+        super(center,radius,color);
     }
 
     /**
@@ -27,15 +28,15 @@ public class Circle extends Shape
      */
     public boolean isInside(Point2D.Double point)
     {
-        double x = point.getX();
-        double y = point.getY();
-        
         Point2D.Double center = super.getCenter();
-        double centerX = center.getX();
-        double centerY = center.getY();
+        double x = center.getX();
+        double y = center.getY();
+        double radius = super.getRadius();
+        double length = radius*2;
         
-        Ellipse2D.Double circle = new Ellipse2D.Double(centerX,centerY,super.getRadius(),super.getRadius());
-        if (circle.contains(x,y))
+        Ellipse2D.Double circle = new Ellipse2D.Double(x-radius,y-radius,length,length);
+        
+        if (circle.contains(point.getX(),point.getY()))
         {
             return true;
         }
@@ -46,26 +47,21 @@ public class Circle extends Shape
     }
     
     /**
-     * Draws this shape. Draws a filled shape if filled is true, and a hollow shape otherwise.
+     * Draws a hollow or filled circle
      * 
-     * @post    shape will be drawn 
+     * @post    a circle will be drawn
      * @param   g2 is the graphics, filled is whether or not the shape will be filled or not
      */
     public void draw(Graphics2D g2, boolean filled)
     {
         Point2D.Double center = super.getCenter();
-        double centerX = center.getX();
-        double centerY = center.getY();
+        double x = center.getX();
+        double y = center.getY();
+        double radius = super.getRadius();
+        double length = radius*2;
         
-        Ellipse2D.Double circle = new Ellipse2D.Double(centerX,centerY,super.getRadius(),super.getRadius());
-        if (filled)
-        {
-            g2.fill(circle);
-        }
-        else
-        {
-            //g2.draw(30,30,30,30);
-        }
+        Ellipse2D.Double circle = new Ellipse2D.Double(x-radius,y-radius,length,length);
+        
     }
 
 }

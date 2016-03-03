@@ -100,9 +100,9 @@ public class DrawingPanel extends JPanel
      */
     public void addCircle()
     {
-        //Circle circle = new Circle(new Point2D.Double(200,200),(50*Math.random()+1),this.currentColor);
-        //circle.draw(g2, this.moved);
-        //this.picked = true;
+        Circle circle = new Circle(new Point2D.Double(200,200),(50*Math.random()+1),this.currentColor);
+        //circle.draw(g2, !this.moved);
+        this.picked = true;
         
     }
     
