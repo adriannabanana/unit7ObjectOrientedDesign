@@ -105,7 +105,6 @@ public class DrawingPanel extends JPanel
     public void addSquare()
     {
         Square square = new Square(new Point2D.Double(285,275),75*Math.random()+1,this.currentColor);
-        
         if (shapes.size()>0)
         {
             this.shapes.add(shapes.size()-1,square);
@@ -114,7 +113,6 @@ public class DrawingPanel extends JPanel
         {
             this.shapes.add(square);
         }
-        
         repaint();
     }
     
@@ -185,7 +183,6 @@ public class DrawingPanel extends JPanel
         public void mouseReleased(MouseEvent event)
         {
              moved = false;
-             activeShape = null;
              repaint();
         }
         
@@ -202,6 +199,5 @@ public class DrawingPanel extends JPanel
         {
         }
     }
-
 }
 

@@ -19,7 +19,7 @@ public class ControlPanel extends JPanel
     private JButton addSquare;
     /** the control panel */
     private DrawingPanel control;
-    
+    /** the current drawing color */
     private JPanel currentColor;
     
     /**
@@ -43,7 +43,6 @@ public class ControlPanel extends JPanel
         this.pickColor.addActionListener(listener);
         this.addCircle.addActionListener(listener);
         this.addSquare.addActionListener(listener);
-        
     }
 
     public class ClickListener implements ActionListener
