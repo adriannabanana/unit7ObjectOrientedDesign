@@ -130,7 +130,15 @@ public class DrawingPanel extends JPanel
         Graphics2D g2 = (Graphics2D) g;
         for (Shape aShape : this.shapes)
         {
-            aShape.draw(g2,!this.moved);
+            if (aShape != activeShape)
+            {
+                aShape.draw(g2,true);
+            }
+        }
+        
+        if (activeShape != null)
+        {
+            activeShape.draw(g2,!this.moved);
         }
     }
     
@@ -179,6 +187,7 @@ public class DrawingPanel extends JPanel
         {
              moved = false;
              activeShape = null;
+             repaint();
         }
         
         public void mouseClicked(MouseEvent event)
