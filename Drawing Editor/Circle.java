@@ -12,12 +12,16 @@ import java.awt.Graphics2D;
  */
 public class Circle extends Shape
 {
+    /** the current color */
+    private Color fillColor;
+    
     /**
      * Default constructor for objects of class Circle
      */
     public Circle(Point2D.Double center, double radius, Color color)
     {
         super(center,radius,color);
+        this.fillColor = color;
     }
 
     /**
@@ -62,6 +66,15 @@ public class Circle extends Shape
         
         Ellipse2D.Double circle = new Ellipse2D.Double(x-radius,y-radius,length,length);
         
+        if (filled)
+        {
+            g2.setColor(fillColor);
+            g2.fill(circle);
+        }
+        else
+        {
+            g2.draw(circle);
+        }        
     }
 
 }

@@ -12,12 +12,16 @@ import java.awt.Graphics2D;
  */
 public class Square extends Shape
 {
+    /** the current color */
+    private Color fillColor;
+    
     /**
      * Default constructor for objects of class Square
      */
     public Square(Point2D.Double center, double halfLength, Color color)
     {
         super(center,halfLength,color);
+        this.fillColor = color;
     }
 
     /**
@@ -31,10 +35,10 @@ public class Square extends Shape
         Point2D.Double center = super.getCenter();
         double x = center.getX();
         double y = center.getY();
-        double radius = super.getRadius();
-        double length = radius*2;
+        double halfLength = super.getRadius();
+        double length = halfLength*2;
         
-        Rectangle2D.Double square = new Rectangle2D.Double(x-radius,y-radius,length,length);
+        Rectangle2D.Double square = new Rectangle2D.Double(x-halfLength,y-halfLength,length,length);
         
         if (square.contains(point.getX(),point.getY()))
         {
@@ -58,19 +62,19 @@ public class Square extends Shape
         Point2D.Double center = super.getCenter();
         double x = center.getX();
         double y = center.getY();
-        double radius = super.getRadius();
-        double length = radius*2;
+        double halfLength = super.getRadius();
+        double length = halfLength*2;
         
-        Rectangle2D.Double square = new Rectangle2D.Double(x-radius,y-radius,length,length);
+        Rectangle2D.Double square = new Rectangle2D.Double(x-halfLength,y-halfLength,length,length);
         
         if (filled)
         {
-            //g2.setColor(color);
+            g2.setColor(fillColor);
             g2.fill(square);
         }
         else
         {
-            
+            g2.draw(square);
         }
     }
 

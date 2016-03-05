@@ -10,9 +10,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
 import java.awt.Graphics2D;
+import java.awt.Graphics;
 
 /**
- * Write a description of class DrawingPanel here.
+ * Draws everything and responds to user interaction w/ shapes
  * 
  * @Adrianna Fu
  * @2.24.16
@@ -27,10 +28,8 @@ public class DrawingPanel extends JPanel
     private Color currentColor;
     /** indicates whether a shape is currently picked on */
     private boolean picked;
-    /** indicates whether shape is being moved (or stretched)*/
+    /** indicates whether shape is being moved */
     private boolean moved;
-    /** background color */
-    private Color backgroundColor;
 
     /**
      * Default constructor for objects of class DrawingPanel
@@ -39,17 +38,18 @@ public class DrawingPanel extends JPanel
     {
         this.shapes = new ArrayList<Shape>();
         this.activeShape = null;
+        this.picked = false;
+        this.moved = false;
         this.currentColor = Color.CYAN;
-        this.backgroundColor = Color.WHITE;
-        
-
-
-        
+        this.setBackground(Color.WHITE);
+        this.addMouseListener(new MouseAndMotionListener());
+        this.addMouseMotionListener(new MouseAndMotionListener());
     }
 
     /**
      * Returns the current drawing color
      * 
+     * @post    currentColor is set to the current drawing color
      * @return    returns the current drawing color
      */
     public Color getColor()
@@ -61,26 +61,20 @@ public class DrawingPanel extends JPanel
      * Overrides JCompoent’s getPreferredSize method to return a size large enough to 
      * encapsulate a reasonable drawing canvas
      * 
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * @post    reasonably sized dimensions for a drawing canvas is returned
+     * @return    new dimensions for the canvas
+     * 
      */
     public Dimension getPreferredSize()
     {
-        return new Dimension(400,400);
+        return new Dimension(400,525);
     }
     
     /**
      * Brings up a JColorChooser and sets the chosen color as the new drawing color
      * Leaves the drawing color unchanged if the user clicks “Cancel”
      *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * @post    currentColor is changed to whatever the user picks
      */
     public void pickColor()
     {
@@ -88,88 +82,119 @@ public class DrawingPanel extends JPanel
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
+     * Adds a circle
      *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * @post    a circle is drawn on the canvas
      */
     public void addCircle()
     {
-        Circle circle = new Circle(new Point2D.Double(200,200),(50*Math.random()+1),this.currentColor);
-        //circle.draw(g2, !this.moved);
-        this.picked = true;
-        
+        Circle circle = new Circle(new Point2D.Double(285,275),(75*Math.random()+1),this.currentColor);
+        if (shapes.size()>0)
+        {
+            this.shapes.add(shapes.size()-1,circle);
+        }
+        else
+        {
+            this.shapes.add(circle);
+        }
+        repaint();
     }
     
     /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
+     * Adds a square
      *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
+     * @post    a square is drawn on the canvas
      */
     public void addSquare()
     {
+        Square square = new Square(new Point2D.Double(285,275),75*Math.random()+1,this.currentColor);
         
+        if (shapes.size()>0)
+        {
+            this.shapes.add(shapes.size()-1,square);
+        }
+        else
+        {
+            this.shapes.add(square);
+        }
+        
+        repaint();
     }
     
-    public class MouseClickListener implements MouseListener
+    /**
+     * Draws all of the shapes in shapes list
+     * 
+     * @post    draws all shapes on canvas
+     */
+    public void paintComponent(Graphics g)
     {
-        public void mouseClicked(MouseEvent event)
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        for (Shape aShape : this.shapes)
         {
-            //setPoint(event.getX(),event.getY());
+            aShape.draw(g2,true);
+        }
+    }
+    
+    public class MouseAndMotionListener implements MouseListener,MouseMotionListener
+    {
+        private boolean inside;
+        /** 
+         * Determines what the activeShape is
+         */
+        public void mousePressed(MouseEvent event)
+        {
+            inside = false;
+            for (Shape aShape : shapes)
+            {
+                if (aShape.isInside(new Point2D.Double(event.getX(),event.getY())))
+                {
+                    activeShape = aShape;
+                    inside = true;
+                }
+            }
+            
+            if (inside == false)
+            {
+                activeShape = null;
+            }
+            repaint();
         }
         
+        /**
+         * Moves the activeShape to wherever the user drags it
+         */
+        public void mouseDragged(MouseEvent event)
+        {
+            double xCoord = event.getX(); 
+            double yCoord = event.getY();
+            activeShape.move(xCoord,yCoord);
+            repaint();
+        }
+        
+        /**
+         * Updates the state of the activeShape
+         */
         public void mouseReleased(MouseEvent event)
         {
+//             moved = false;
+//             picked = false;
+//             activeShape = null;
         }
         
+        public void mouseClicked(MouseEvent event)
+        {   
+        }
         public void mouseEntered(MouseEvent event) 
         {
         }
-        
         public void mouseExited(MouseEvent event)
         {
         }
-        
-        public void mousePressed(MouseEvent event)
-        {
-        }
-    }
-    
-    public class MouseMotion implements MouseMotionListener
-    {
         public void mouseMoved(MouseEvent event)
         {
         }
-        
-        public void mouseDragged(MouseEvent event)
-        {
-        }
     }
-    
-    public class KeyPressListener implements KeyListener
-    {
-        public void keyTyped(KeyEvent event)
-        {
-        }
-        
-        public void keyPressed(KeyEvent event)
-        {
-        }
-        
-        public void keyReleased(KeyEvent event)
-        {
-        }
-    }
+
 }
 
