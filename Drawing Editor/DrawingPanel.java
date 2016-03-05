@@ -26,8 +26,6 @@ public class DrawingPanel extends JPanel
     private Shape activeShape;
     /** current drawing color */
     private Color currentColor;
-    /** indicates whether a shape is currently picked on */
-    private boolean picked;
     /** indicates whether shape is being moved */
     private boolean moved;
 
@@ -38,7 +36,7 @@ public class DrawingPanel extends JPanel
     {
         this.shapes = new ArrayList<Shape>();
         this.activeShape = null;
-        this.picked = false;
+
         this.moved = false;
         this.currentColor = Color.CYAN;
         this.setBackground(Color.WHITE);
@@ -132,7 +130,7 @@ public class DrawingPanel extends JPanel
         Graphics2D g2 = (Graphics2D) g;
         for (Shape aShape : this.shapes)
         {
-            aShape.draw(g2,true);
+            aShape.draw(g2,!this.moved);
         }
     }
     
@@ -157,6 +155,7 @@ public class DrawingPanel extends JPanel
             if (inside == false)
             {
                 activeShape = null;
+                moved = false;
             }
             repaint();
         }
@@ -166,6 +165,7 @@ public class DrawingPanel extends JPanel
          */
         public void mouseDragged(MouseEvent event)
         {
+            moved = true;
             double xCoord = event.getX(); 
             double yCoord = event.getY();
             activeShape.move(xCoord,yCoord);
@@ -177,9 +177,8 @@ public class DrawingPanel extends JPanel
          */
         public void mouseReleased(MouseEvent event)
         {
-//             moved = false;
-//             picked = false;
-//             activeShape = null;
+             moved = false;
+             activeShape = null;
         }
         
         public void mouseClicked(MouseEvent event)

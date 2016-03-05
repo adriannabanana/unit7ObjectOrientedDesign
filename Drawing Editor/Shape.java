@@ -57,9 +57,7 @@ public abstract class Shape
      */
     public void move(double x, double y)
     {
-        double xCoordinate = this.center.getX();
-        double yCoordinate = this.center.getY();
-        this.center.setLocation(xCoordinate+x,yCoordinate+y);
+        this.center = new Point2D.Double(x,y);
     }
 
     /**
@@ -88,6 +86,4 @@ public abstract class Shape
      * @param   g2 is the graphics, filled is whether or not the shape will be filled or not
      */
     public abstract void draw(Graphics2D g2, boolean filled);
-
-   
 }

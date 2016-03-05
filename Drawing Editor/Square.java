@@ -66,15 +66,11 @@ public class Square extends Shape
         double length = halfLength*2;
         
         Rectangle2D.Double square = new Rectangle2D.Double(x-halfLength,y-halfLength,length,length);
-        
+        g2.draw(square);
         if (filled)
         {
             g2.setColor(fillColor);
             g2.fill(square);
-        }
-        else
-        {
-            g2.draw(square);
         }
     }
 

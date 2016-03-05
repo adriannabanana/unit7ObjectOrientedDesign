@@ -63,6 +63,7 @@ public class ControlPanel extends JPanel
             {
                 control.addSquare();
             }
+            control.repaint();
         }
     }
 }
