@@ -36,7 +36,6 @@ public class DrawingPanel extends JPanel
     {
         this.shapes = new ArrayList<Shape>();
         this.activeShape = null;
-
         this.moved = false;
         this.currentColor = Color.CYAN;
         this.setBackground(Color.WHITE);
