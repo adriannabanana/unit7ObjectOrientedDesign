@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 /**
  * A shape 
  * 
- * @Adrianna Fu
- * @3/1/16
+ * @author Adrianna Fu
+ * @version 3.1.16
  */
 public abstract class Shape
 {
@@ -18,7 +18,7 @@ public abstract class Shape
     private Color color;
 
     /**
-     * Default constructor for objects of class Shape
+     * Initializes a new instance of the Shape class
      */
     public Shape(Point2D.Double center, double radius, Color color)
     {
@@ -30,8 +30,7 @@ public abstract class Shape
     /**
      * Returns the center of the shape
      *
-     * @post    center coordinates returned
-     * @return    the center of the shape
+     * @return    the center coordinates of the shape
      */
     public Point2D.Double getCenter()
     {
@@ -41,7 +40,6 @@ public abstract class Shape
     /**
      * Returns the radius
      *
-     * @post    radius returned
      * @return    radius
      */
     public double getRadius()
@@ -53,7 +51,8 @@ public abstract class Shape
      * Displaces the center of this shape by (x, y).
      *
      * @post    shape displaced by (x,y)
-     * @param   x: units the x-coordinate will be displaced; y: units the y-coordinate will be displaced
+     * @param   x units the x-coordinate will be displaced
+     * @param   y units the y-coordinate will be displaced
      */
     public void move(double x, double y)
     {
@@ -63,8 +62,8 @@ public abstract class Shape
     /**
      * Sets the radius of this shape to r
      *
-     * @post    r is the new radius
-     * @param    radius passed in
+     * @post    radius of shape is set to r
+     * @param    r radius that is passed in  
      */
     public void setRadius(double r)  
     {
@@ -83,7 +82,8 @@ public abstract class Shape
      * Draws this shape. Draws a filled shape if filled is true, and a hollow shape otherwise.
      * 
      * @post    shape will be drawn 
-     * @param   g2 is the graphics, filled is whether or not the shape will be filled or not
+     * @param   g2 Graphics2D 
+     * @param   filled  whether or not the shape will be filled
      */
     public abstract void draw(Graphics2D g2, boolean filled);
 }

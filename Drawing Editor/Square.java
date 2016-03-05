@@ -3,12 +3,11 @@ import java.awt.geom.Rectangle2D;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-
 /**
  * A square shape
  * 
- * @Adrianna Fu
- * @3/1/16
+ * @author Adrianna Fu
+ * @version 3.1.16
  */
 public class Square extends Shape
 {
@@ -16,7 +15,7 @@ public class Square extends Shape
     private Color fillColor;
     
     /**
-     * Default constructor for objects of class Square
+     * Initializes a new instance of the Square class
      */
     public Square(Point2D.Double center, double halfLength, Color color)
     {
@@ -48,14 +47,14 @@ public class Square extends Shape
         {
             return false;
         }
-
     }
     
     /**
      * Draws a hollow or filled square
      * 
      * @post    shape will be drawn 
-     * @param   g2 is the graphics, filled is whether or not the shape will be filled or not
+     * @param   g2 Graphics2D 
+     * @param   filled  whether or not the shape will be filled
      */
     public void draw(Graphics2D g2, boolean filled)
     {
@@ -66,6 +65,7 @@ public class Square extends Shape
         double length = halfLength*2;
         
         Rectangle2D.Double square = new Rectangle2D.Double(x-halfLength,y-halfLength,length,length);
+        
         g2.setColor(fillColor);
         g2.draw(square);
         if (filled)
@@ -73,5 +73,4 @@ public class Square extends Shape
             g2.fill(square);
         }
     }
-
 }

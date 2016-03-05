@@ -3,20 +3,19 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
-
 /**
  * Attaches canvas and controls to JFrame’s content pane
  * 
- * @Adrianna Fu 
- * @2.23.16
+ * @author Adrianna Fu 
+ * @version 2.23.16
  */
 public class DrawingEditor extends JFrame
 {
-    /** set width of frame */
+    /** width of frame */
     private static final int FRAME_WIDTH = 600;
-    /** set height of frame */
+    /** height of frame */
     private static final int FRAME_HEIGHT = 600;
-    /** the canvas where shapes will be drawn on */
+    /** where shapes will be drawn */
     private DrawingPanel canvas;
     /** the control panel of buttons */
     private ControlPanel controls;
@@ -24,7 +23,7 @@ public class DrawingEditor extends JFrame
     private JPanel panel;
 
     /**
-     * Default constructor for objects of class DrawingEditor
+     * Initializes a new instance of the DrawingEditor class
      */
     public DrawingEditor()
     {
@@ -40,9 +39,11 @@ public class DrawingEditor extends JFrame
         this.setVisible(true);
     }
 
+    /**
+     * Creates a new DrawingEditor object which opens a window on the screen
+     */
     public static void main(String args[])
     {
         DrawingEditor newWindow = new DrawingEditor();
     }
-
 }

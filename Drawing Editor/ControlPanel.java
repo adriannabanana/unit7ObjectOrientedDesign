@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * Write a description of class ControlPanel here.
+ * Shape buttons and color chooser on the canvas
  * 
  * @Adrianna Fu
  * @2.23.16
@@ -23,7 +23,7 @@ public class ControlPanel extends JPanel
     private JPanel currentColor;
     
     /**
-     * Default constructor for objects of class ControlPanel
+     * Initializes a new instance of the ControlPanel class
      */
     public ControlPanel(DrawingPanel canvas)
     {

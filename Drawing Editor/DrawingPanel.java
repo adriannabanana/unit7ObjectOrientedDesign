@@ -15,8 +15,8 @@ import java.awt.Graphics;
 /**
  * Draws everything and responds to user interaction w/ shapes
  * 
- * @Adrianna Fu
- * @2.24.16
+ * @author Adrianna Fu
+ * @version 2.24.16
  */
 public class DrawingPanel extends JPanel
 {
@@ -26,11 +26,11 @@ public class DrawingPanel extends JPanel
     private Shape activeShape;
     /** current drawing color */
     private Color currentColor;
-    /** indicates whether shape is being moved */
+    /** indicates whether shape is being moved or not */
     private boolean moved;
 
     /**
-     * Default constructor for objects of class DrawingPanel
+     * Initializes a new instance of the DrawingPanel class
      */
     public DrawingPanel()
     {
@@ -46,7 +46,6 @@ public class DrawingPanel extends JPanel
     /**
      * Returns the current drawing color
      * 
-     * @post    currentColor is set to the current drawing color
      * @return    returns the current drawing color
      */
     public Color getColor()
@@ -58,9 +57,7 @@ public class DrawingPanel extends JPanel
      * Overrides JCompoent’s getPreferredSize method to return a size large enough to 
      * encapsulate a reasonable drawing canvas
      * 
-     * @post    reasonably sized dimensions for a drawing canvas is returned
      * @return    new dimensions for the canvas
-     * 
      */
     public Dimension getPreferredSize()
     {
@@ -119,7 +116,8 @@ public class DrawingPanel extends JPanel
     /**
      * Draws all of the shapes in shapes list
      * 
-     * @post    draws all shapes on canvas
+     * @post    all shapes drawn on canvas
+     * @param   g Graphics
      */
     public void paintComponent(Graphics g)
     {
@@ -186,18 +184,10 @@ public class DrawingPanel extends JPanel
              repaint();
         }
         
-        public void mouseClicked(MouseEvent event)
-        {   
-        }
-        public void mouseEntered(MouseEvent event) 
-        {
-        }
-        public void mouseExited(MouseEvent event)
-        {
-        }
-        public void mouseMoved(MouseEvent event)
-        {
-        }
+        public void mouseClicked(MouseEvent event){}
+        public void mouseEntered(MouseEvent event) {}
+        public void mouseExited(MouseEvent event){}
+        public void mouseMoved(MouseEvent event){}
     }
 }
 
